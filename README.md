@@ -66,6 +66,9 @@ git clone https://github.com/tomasrome/jotems-redemption-project
 # 2. Navegar al directorio del proyecto
 cd jotems-redemption-project
 
+# 3. Instalar requerimientos
+pip install -r requirements.txt
+
 # 3. Ejecutar el juego
 python main.py
 ```
