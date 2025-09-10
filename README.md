@@ -66,19 +66,7 @@ git clone https://github.com/tomasrome/jotems-redemption-project
 # 2. Navegar al directorio del proyecto
 cd jotems-redemption-project
 
-# 3. Crear un entorno virtual (recomendado)
-python -m venv venv
-
-# 4. Activar el entorno virtual
-# En Windows:
-venv\Scripts\activate
-# En macOS/Linux:
-source venv/bin/activate
-
-# 5. Instalar las dependencias
-pip install -r requirements.txt
-
-# 6. Ejecutar el juego
+# 3. Ejecutar el juego
 python main.py
 ```
 
