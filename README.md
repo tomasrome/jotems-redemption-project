@@ -2,7 +2,7 @@
 
 <div align="center">
   
-![Game Banner](banner.jpg)
+![Game Banner](assets/image/banner.jpg)
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Pygame](https://img.shields.io/badge/Pygame-2.0+-green?style=for-the-badge&logo=python&logoColor=white)](https://www.pygame.org/)
@@ -36,7 +36,7 @@ En este juego encarnas a un valiente guerrero que debe enfrentarse a enemigos de
 
 ## 📷 Capturas de pantalla  
 
-| ![Captura-1](screen1.jpg) | ![Captura-2](screen2.jpg) |  
+| ![Captura-1](assets/image/screen1.jpg) | ![Captura-2](assets/image/screen2.jpg) |  
 
 
 ---
