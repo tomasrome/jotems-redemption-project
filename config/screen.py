@@ -1,5 +1,5 @@
 import pygame
-import constantes
+import src.utils.constantes as constantes
 
 screen = pygame.display.set_mode((constantes.ANCHO_VENTANA, constantes.ALTO_VENTANA))
 

@@ -1,10 +1,10 @@
 import pygame
-import constantes
-from personaje import Personaje
-from funciones import mostrar_menu
+import src.utils.constantes as constantes
+from src.entities.personaje import Personaje
+from src.utils.funciones import mostrar_menu
 from assets.sounds.sounds import reproducir_musica_menu, sonido_menu
-from assets.config.screen import boton_jugar
-from juego import ejecutar_juego
+from config.screen import boton_jugar
+from src.juego import ejecutar_juego
 
 pygame.init()
 pygame.mixer.init()

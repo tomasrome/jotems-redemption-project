@@ -1,4 +1,4 @@
-#  Jotem's Redemption
+# Jotem's Redemption
 
 <div align="center">
   
@@ -11,7 +11,7 @@
 
 **Un épico videojuego 2D de aventuras y fantasía**
 
-*En la oscuridad de tu culpa, solo el valor en combate puede devolverte la luz*
+_En la oscuridad de tu culpa, solo el valor en el combate puede devolverte la luz_
 
 </div>
 
@@ -19,7 +19,7 @@
 
 ## 🎮 Descripción del Juego
 
-**Jotem's Redemption** es un videojuego 2D de aventuras ambientado en un mundo de fantasía oscura, desarrollado completamente en **Python** utilizando **Pygame**. 
+**Jotem's Redemption** es un videojuego 2D de aventuras ambientado en un mundo de fantasía oscura, desarrollado completamente en **Python** utilizando **Pygame**.
 
 En este juego encarnas a un valiente guerrero que debe enfrentarse a enemigos desafiantes mientras explora diversos escenarios llenos de peligros y secretos. Con un estilo visual de **pixel art** cuidadosamente diseñado, cada nivel ofrece una experiencia única que combina acción, estrategia y exploración.
 
@@ -34,10 +34,9 @@ En este juego encarnas a un valiente guerrero que debe enfrentarse a enemigos de
 
 ---
 
-## 📷 Capturas de pantalla  
+## 📷 Capturas de pantalla
 
-| ![Captura-1](assets/image/screen1.jpg) | ![Captura-2](assets/image/screen2.jpg) |  
-
+| ![Captura-1](assets/image/screen1.jpg) | ![Captura-2](assets/image/screen2.jpg) |
 
 ---
 
@@ -54,6 +53,7 @@ En este juego encarnas a un valiente guerrero que debe enfrentarse a enemigos de
 ### Prerrequisitos
 
 Asegurate de tener instalado:
+
 - Python 3.8 o superior
 - pip (administrador de paquetes de Python)
 
@@ -87,13 +87,13 @@ python main.py
 
 ## 🎯 Controles del Juego
 
-| Acción | Tecla |
-|--------|-------|
-| **Mover izquierda** | `A` |
-| **Mover derecha** | `D` |
-| **Saltar** | `W` |
-| **Atacar** | `Espacio` |
-| **Pausar** | `Esc` |
+| Acción              | Tecla     |
+| ------------------- | --------- |
+| **Mover izquierda** | `A`       |
+| **Mover derecha**   | `D`       |
+| **Saltar**          | `W`       |
+| **Atacar**          | `Espacio` |
+| **Pausar**          | `Esc`     |
 
 ---
 
@@ -131,7 +131,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 
 **¿Te gusta el proyecto? ¡Dale una ⭐ al repositorio!**
 
-*Desarrollado con ❤️ y mucho ☕ por [Tomás Romero](https://github.com/tomasrome)*
+_Desarrollado con ❤️ y mucho ☕ por [Tomás Romero](https://github.com/tomasrome)_
 
 ![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge)
 ![Powered by Coffee](https://img.shields.io/badge/Powered%20by-☕-brown?style=for-the-badge)

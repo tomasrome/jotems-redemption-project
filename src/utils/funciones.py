@@ -1,9 +1,9 @@
 import pygame
-from assets.config.screen import boton_jugar,boton_controles,boton_puntuaciones,screen
+from config.screen import boton_jugar,boton_controles,boton_puntuaciones,screen
 from assets.image.background.background import background_menu
 from assets.color import color
-import constantes
-from personaje import Personaje
+import src.utils.constantes as constantes
+from src.entities.personaje import Personaje
 import os
 
 def dibujar_texto(texto, x, y, color, tamanio = 40):

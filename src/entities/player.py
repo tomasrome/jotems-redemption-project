@@ -1,26 +1,26 @@
-import pygame
-from funciones import cargar_animaciones
 
-class Skeleton():
-    def __init__(self, x,y):
+from src.utils.funciones import cargar_animaciones
+import pygame
+
+class Player():
+    def __init__(self, x, y):
         self.animaciones = {
-            "idle" : cargar_animaciones("assets/image/characters/enemies/skeleton/idle",1.8),
-            "walk" : cargar_animaciones("assets/image/characters/enemies/skeleton/walk",1.8),
-            "attack" : cargar_animaciones("assets/image/characters/enemies/skeleton/attack",1.8),
-            "hit" : cargar_animaciones("assets/image/characters/enemies/skeleton/hit",1.8)
+            "idle" : cargar_animaciones("assets/image/characters/player/idle", 2.2),
+            "run" : cargar_animaciones("assets/image/characters/player/run", 2.2),
+            "jump" : cargar_animaciones("assets/image/characters/player/jump", 2.2),
+            "fall" : cargar_animaciones("assets/image/characters/player/fall", 2.2),
+            "attack" : cargar_animaciones("assets/image/characters/player/attack", 2.2),
+        }
+        self.cooldowns = {
+            "idle": 175,
+            "run": 100,
+            "jump": 100,
+            "fall": 100,
+            "attack": 50,
+
         }
         self.estado = "idle"
-        self.estado_anterior = self.estado
-        self.cooldowns = {
-            "idle": 200,
-            "walk": 100,
-            "attack": 50,
-            "hit": 30
-        }
-        self.atacando = False
-        self.atacado = False
-        self.fue_golpeado = False
-        self.reproduciendo_hit = False
+        self.estado_anterior = "idle"
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
 
@@ -31,26 +31,32 @@ class Skeleton():
         self.pos_x = x
         self.pos_y = y
 
+        self.vel_y = 0
+        self.gravedad = 1.2
+        self.fuerza_salto = -18
+        self.en_el_suelo = True
         self.atacando = False
 
         self.flip = False
+    
+    def updates(self):
 
+        #Salto
+        self.vel_y += self.gravedad
+        self.pos_y += self.vel_y
 
-    def update(self):
-
-        cooldown = self.cooldowns.get(self.estado,120)
-
-        if self.fue_golpeado and not self.reproduciendo_hit:
-            self.estado = "hit"
-            self.frame_index = 0
-            self.update_time = pygame.time.get_ticks()
-            self.fue_golpeado = False
-            self.reproduciendo_hit = True
-
+        if self.pos_y >= 365:
+            self.pos_y = 365
+            self.vel_y = 0
+            self.en_el_suelo = True
+        
         if self.estado != self.estado_anterior:
             self.frame_index = 0
             self.update_time = pygame.time.get_ticks()
             self.estado_anterior = self.estado
+        
+        
+        cooldown = self.cooldowns.get(self.estado)
 
         if pygame.time.get_ticks() - self.update_time > cooldown:
             self.frame_index += 1
@@ -61,16 +67,18 @@ class Skeleton():
             if self.estado == "attack":
                 self.atacando = False
                 self.estado = "idle"
-            if self.estado == "hit":
-                self.estado = "idle"
-                self.reproduciendo_hit = False
         
-
         self.image = self.animaciones[self.estado][self.frame_index]
         self.forma = self.image.get_rect()
         self.forma.midbottom = (self.pos_x, self.pos_y)
 
+
+    def dibujar(self, superficie):
+        imagem_flip = pygame.transform.flip(self.image, self.flip, False)
+        superficie.blit(imagem_flip, self.forma)
+        #pygame.draw.rect(superficie, (0, 255, 0), self.forma, 2)
     
+
     def movimiento(self, delta_x):
         if delta_x < 0:
             self.flip = True
@@ -82,22 +90,27 @@ class Skeleton():
             #self.pos_x = 276
         #else:
         self.pos_x += delta_x
+        
+    
+
+    def saltar(self):
+        if self.en_el_suelo:
+            self.vel_y = self.fuerza_salto
+            self.en_el_suelo = False
 
     def controlar_estado(self, teclas):
         if self.atacando:
             return
-        elif self.atacado:
-            if not self.ataque_terminado:
-                self.estado = "hit"
-        elif teclas[pygame.K_LEFT] or teclas[pygame.K_RIGHT]:
-            self.estado = "walk"
+
+        if not self.en_el_suelo:
+            if self.vel_y <= 2:
+                self.estado = "jump"
+            else:
+                self.estado = "fall"
+        elif teclas[pygame.K_a] or teclas[pygame.K_d]:
+            self.estado = "run"
         else:
             self.estado = "idle"
-    
-    def dibujar(self, superficie):
-        imagem_flip = pygame.transform.flip(self.image, self.flip, False)
-        superficie.blit(imagem_flip, self.forma)
-        #pygame.draw.rect(superficie, (255, 0, 0), self.forma, 2)
 
     def atacar(self):
         if not self.atacando:
@@ -105,6 +118,4 @@ class Skeleton():
             self.atacando = True
             self.frame_index = 0
             self.update_time = pygame.time.get_ticks()
-
-    def recibir_golpe(self):
-        self.fue_golpeado = True
+    

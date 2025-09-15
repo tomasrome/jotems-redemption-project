@@ -1,11 +1,11 @@
 
 import pygame
-from assets.config.screen import screen
-import constantes
-from personaje import Personaje
-from funciones import escalar_img
-from player import Player
-from skeleton import Skeleton
+from config.screen import screen
+import src.utils.constantes as constantes
+from src.entities.personaje import Personaje
+from src.utils.funciones import escalar_img
+from src.entities.player import Player
+from src.entities.skeleton import Skeleton
 
 
 def ejecutar_juego():
