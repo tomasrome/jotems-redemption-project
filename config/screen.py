@@ -1,7 +1,7 @@
 import pygame
 import src.utils.constantes as constantes
 
-screen = pygame.display.set_mode((constantes.ANCHO_VENTANA, constantes.ALTO_VENTANA))
+screen = pygame.display.set_mode((constantes.ANCHO_VENTANA, constantes.ALTO_VENTANA),pygame.FULLSCREEN)
 
 ANCHO_BOTON = 170
 ALTO_BOTON = 60
