@@ -23,8 +23,8 @@ def ejecutar_juego():
     imagen_background_luces = pygame.image.load("assets//image//background//luces1.png")
     posicion_fondo_luces = 0
 
-    jugador = Player(50,630)
-    enemigo_1 = Skeleton(600, 631)
+    jugador = Player(100,631)
+    enemigo_1 = Skeleton(900, 631)
 
     mover_izquierda= False
     mover_derecha = False
