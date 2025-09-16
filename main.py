@@ -3,7 +3,7 @@ import src.utils.constantes as constantes
 from src.entities.personaje import Personaje
 from src.utils.funciones import mostrar_menu
 from assets.sounds.sounds import reproducir_musica_menu, sonido_menu
-from config.screen import boton_jugar
+from config.screen import boton_jugar,boton_salir
 from src.juego import ejecutar_juego
 
 pygame.init()
@@ -30,6 +30,9 @@ while run:
             if boton_jugar.collidepoint(event.pos):
                 sonido_menu()
                 estado = "juego"
+            if boton_salir.collidepoint(event.pos):
+                sonido_menu()
+                run = False
 
 
     if estado == "menu":

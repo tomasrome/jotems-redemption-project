@@ -1,5 +1,5 @@
 import pygame
-from config.screen import boton_jugar,boton_controles,boton_puntuaciones,screen
+from config.screen import boton_jugar,boton_opciones,boton_salir,screen
 from assets.image.background.background import background_menu
 from assets.color import color
 import src.utils.constantes as constantes
@@ -32,6 +32,24 @@ def mostrar_menu():
         screen.blit(superficie_transparente,(boton_jugar.x, boton_jugar.y))
         dibujar_texto("Jugar", boton_jugar.centerx ,boton_jugar.centery,color.BLANCO,30)
     #pygame.draw.rect(screen,(245, 245, 245),boton_jugar)
+    if boton_opciones.collidepoint(pygame.mouse.get_pos()):
+        pygame.draw.rect(screen,(245, 245, 245),boton_opciones)
+        dibujar_texto("Opciones", boton_opciones.centerx ,boton_opciones.centery,color.AZUL,23)
+    else:
+
+        superficie_transparente = pygame.Surface((boton_opciones.width, boton_opciones.height), pygame.SRCALPHA)
+        superficie_transparente.fill((255,255,255,40))
+        screen.blit(superficie_transparente,(boton_opciones.x, boton_opciones.y))
+        dibujar_texto("Opciones", boton_opciones.centerx ,boton_opciones.centery,color.BLANCO,23)
+    if boton_salir.collidepoint(pygame.mouse.get_pos()):
+        pygame.draw.rect(screen,(245, 245, 245),boton_salir)
+        dibujar_texto("Salir", boton_salir.centerx ,boton_salir.centery,color.AZUL,23)
+    else:
+
+        superficie_transparente = pygame.Surface((boton_salir.width, boton_salir.height), pygame.SRCALPHA)
+        superficie_transparente.fill((255,255,255,40))
+        screen.blit(superficie_transparente,(boton_salir.x, boton_salir.y))
+        dibujar_texto("Salir", boton_salir.centerx ,boton_salir.centery,color.BLANCO,23)
 
 def escalar_img(image, scale):
     w = image.get_width()

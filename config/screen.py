@@ -10,5 +10,5 @@ x = (constantes.ANCHO_VENTANA - ANCHO_BOTON) // 2
 y = (constantes.ALTO_VENTANA - ALTO_BOTON) // 2
 
 boton_jugar = pygame.Rect(x,y,ANCHO_BOTON,ALTO_BOTON)
-boton_controles = pygame.Rect(229,45,15,60)
-boton_puntuaciones = pygame.Rect(229,45,15,60)
+boton_opciones = pygame.Rect(x,y+50,ANCHO_BOTON,ALTO_BOTON)
+boton_salir = pygame.Rect(x,y+100,ANCHO_BOTON,ALTO_BOTON)
