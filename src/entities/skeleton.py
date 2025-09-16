@@ -4,10 +4,10 @@ from src.utils.funciones import cargar_animaciones
 class Skeleton():
     def __init__(self, x,y):
         self.animaciones = {
-            "idle" : cargar_animaciones("assets/image/characters/enemies/skeleton/idle",1.8),
-            "walk" : cargar_animaciones("assets/image/characters/enemies/skeleton/walk",1.8),
-            "attack" : cargar_animaciones("assets/image/characters/enemies/skeleton/attack",1.8),
-            "hit" : cargar_animaciones("assets/image/characters/enemies/skeleton/hit",1.8)
+            "idle" : cargar_animaciones("assets/image/characters/enemies/skeleton/idle",2.4),
+            "walk" : cargar_animaciones("assets/image/characters/enemies/skeleton/walk",2.4),
+            "attack" : cargar_animaciones("assets/image/characters/enemies/skeleton/attack",2.4),
+            "hit" : cargar_animaciones("assets/image/characters/enemies/skeleton/hit",2.4)
         }
         self.estado = "idle"
         self.estado_anterior = self.estado

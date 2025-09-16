@@ -5,17 +5,17 @@ import pygame
 class Player():
     def __init__(self, x, y):
         self.animaciones = {
-            "idle" : cargar_animaciones("assets/image/characters/player/idle", 2.2),
-            "run" : cargar_animaciones("assets/image/characters/player/run", 2.2),
-            "jump" : cargar_animaciones("assets/image/characters/player/jump", 2.2),
-            "fall" : cargar_animaciones("assets/image/characters/player/fall", 2.2),
-            "attack" : cargar_animaciones("assets/image/characters/player/attack", 2.2),
+            "idle" : cargar_animaciones("assets/image/characters/player/idle", 3),
+            "run" : cargar_animaciones("assets/image/characters/player/run", 3),
+            "jump" : cargar_animaciones("assets/image/characters/player/jump", 3),
+            "fall" : cargar_animaciones("assets/image/characters/player/fall", 3),
+            "attack" : cargar_animaciones("assets/image/characters/player/attack", 3),
         }
         self.cooldowns = {
-            "idle": 175,
-            "run": 100,
-            "jump": 100,
-            "fall": 100,
+            "idle": 120,
+            "run": 75,
+            "jump": 75,
+            "fall": 75,
             "attack": 50,
 
         }
@@ -32,8 +32,8 @@ class Player():
         self.pos_y = y
 
         self.vel_y = 0
-        self.gravedad = 1.2
-        self.fuerza_salto = -18
+        self.gravedad = 2
+        self.fuerza_salto = -28
         self.en_el_suelo = True
         self.atacando = False
 
@@ -45,8 +45,8 @@ class Player():
         self.vel_y += self.gravedad
         self.pos_y += self.vel_y
 
-        if self.pos_y >= 365:
-            self.pos_y = 365
+        if self.pos_y >= 631:
+            self.pos_y = 631
             self.vel_y = 0
             self.en_el_suelo = True
         
