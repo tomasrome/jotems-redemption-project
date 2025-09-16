@@ -16,11 +16,11 @@ def ejecutar_juego():
 
 
 
-    imagen_background_1 = pygame.image.load("assets//image//background//fondo1.png")
+    imagen_background_1 = pygame.image.load("assets//image//background//fondo10.png")
     posicion_fondo_1 = 0
-    imagen_background_2 = pygame.image.load("assets//image//background//fondo2.png")
+    imagen_background_2 = pygame.image.load("assets//image//background//fondo20.png")
     posicion_fondo_2 = 0
-    imagen_background_luces = pygame.image.load("assets//image//background//luces.png")
+    imagen_background_luces = pygame.image.load("assets//image//background//luces1.png")
     posicion_fondo_luces = 0
 
     jugador = Player(50,365)
@@ -114,16 +114,16 @@ def ejecutar_juego():
           #  posicion_fondo_2 += 3
           #  posicion_fondo_luces += 1
 
-        if posicion_fondo_1 <= -762 or posicion_fondo_1 >= 762:
+        if posicion_fondo_1 <= -1280 or posicion_fondo_1 >= 1280:
             posicion_fondo_1 = 0
         
-        if posicion_fondo_2 <= -762 or posicion_fondo_2 >= 762:
+        if posicion_fondo_2 <= -1280 or posicion_fondo_2 >= 1280:
             posicion_fondo_2 = 0
         
 
         posicion_fondo_luces -= 1.3
 
-        if posicion_fondo_luces <= -762 or posicion_fondo_luces >= 762:
+        if posicion_fondo_luces <= -1280 or posicion_fondo_luces >= 1280:
             posicion_fondo_luces = 0
         
     
@@ -131,11 +131,11 @@ def ejecutar_juego():
         
 
         screen.blit(imagen_background_1,(posicion_fondo_1,0))
-        screen.blit(imagen_background_1,(posicion_fondo_1+762,0))
+        screen.blit(imagen_background_1,(posicion_fondo_1+1280,0))
         screen.blit(imagen_background_luces,(posicion_fondo_luces,0))
-        screen.blit(imagen_background_luces,(posicion_fondo_luces+762,0))
+        screen.blit(imagen_background_luces,(posicion_fondo_luces+1280,0))
         screen.blit(imagen_background_2,(posicion_fondo_2,0))
-        screen.blit(imagen_background_2,(posicion_fondo_2+762,0))
+        screen.blit(imagen_background_2,(posicion_fondo_2+1280,0))
 
 
         jugador.movimiento(delta_x)
