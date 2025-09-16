@@ -36,7 +36,7 @@ En este juego encarnas a un valiente guerrero que debe enfrentarse a enemigos de
 
 ## 📷 Capturas de pantalla
 
-| ![Captura-1](assets/image/screen1.jpg) | ![Captura-2](assets/image/screen2.jpg) |
+| ![Captura-1](assets/image/screen-menu.png) | ![Captura-2](assets/image/screen-gameplay.png) |
 
 ---
 
