@@ -53,6 +53,11 @@ def sonido_land():
     sonido.set_volume(0.10)
     sonido.play()
 
+def sonido_attack():
+    sonido = pygame.mixer.Sound("assets/sounds/player/attack.mp3")
+    sonido.set_volume(0.15)
+    sonido.play()
+
 def reproducir_musica_menu():
     pygame.mixer.music.load("assets/music/back_menu.mp3")
     pygame.mixer.music.set_volume(0.2)

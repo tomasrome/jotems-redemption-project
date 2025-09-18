@@ -1,6 +1,6 @@
 
 from src.utils.funciones import cargar_animaciones
-from assets.sounds.sounds import sonido_jump, sonido_land, sonido_run
+from assets.sounds.sounds import sonido_jump, sonido_land, sonido_run, sonido_attack
 import pygame
 
 class Player():
@@ -131,4 +131,5 @@ class Player():
             self.atacando = True
             self.frame_index = 0
             self.update_time = pygame.time.get_ticks()
+            sonido_attack()
     

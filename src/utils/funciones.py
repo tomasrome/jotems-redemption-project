@@ -16,37 +16,46 @@ def dibujar_texto(texto, x, y, color, tamanio = 40):
     screen.blit(superficie,rect)
     return rect
 
-
+hover = False
 
 def mostrar_menu():
     
     screen.blit(background_menu,(0,0))
-
+    global hover
     
     if boton_jugar.collidepoint(pygame.mouse.get_pos()):
-        sonido_botones()
+        if not hover:
+            sonido_botones()
+            hover = True
         pygame.draw.rect(screen,(245, 245, 245),boton_jugar)
         dibujar_texto("Play", boton_jugar.centerx ,boton_jugar.centery,color.AZUL,40)
     else:
+        hover = False
         superficie_transparente = pygame.Surface((boton_jugar.width, boton_jugar.height), pygame.SRCALPHA)
         superficie_transparente.fill((255,255,255,40))
         screen.blit(superficie_transparente,(boton_jugar.x, boton_jugar.y))
         dibujar_texto("Play", boton_jugar.centerx ,boton_jugar.centery,color.BLANCO,40)
     #pygame.draw.rect(screen,(245, 245, 245),boton_jugar)
     if boton_opciones.collidepoint(pygame.mouse.get_pos()):
-        sonido_botones()
+        if not hover:
+            sonido_botones()
+            hover = True
         pygame.draw.rect(screen,(245, 245, 245),boton_opciones)
         dibujar_texto("Options", boton_opciones.centerx ,boton_opciones.centery,color.AZUL,35)
     else:
+        
         superficie_transparente = pygame.Surface((boton_opciones.width, boton_opciones.height), pygame.SRCALPHA)
         superficie_transparente.fill((255,255,255,40))
         screen.blit(superficie_transparente,(boton_opciones.x, boton_opciones.y))
         dibujar_texto("Options", boton_opciones.centerx ,boton_opciones.centery,color.BLANCO,35)
     if boton_salir.collidepoint(pygame.mouse.get_pos()):
-        sonido_botones()
+        if not hover:
+            sonido_botones()
+            hover = True
         pygame.draw.rect(screen,(245, 245, 245),boton_salir)
         dibujar_texto("Exit", boton_salir.centerx ,boton_salir.centery,color.AZUL,40)
     else:
+        
         superficie_transparente = pygame.Surface((boton_salir.width, boton_salir.height), pygame.SRCALPHA)
         superficie_transparente.fill((255,255,255,40))
         screen.blit(superficie_transparente,(boton_salir.x, boton_salir.y))
