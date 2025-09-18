@@ -2,12 +2,13 @@ import pygame
 import src.utils.constantes as constantes
 from src.entities.personaje import Personaje
 from src.utils.funciones import mostrar_menu
-from assets.sounds.sounds import reproducir_musica_menu, sonido_menu
+from assets.sounds.sounds import reproducir_musica_menu, sonido_menu, init_sounds
 from config.screen import boton_jugar,boton_salir
 from src.juego import ejecutar_juego
 
 pygame.init()
 pygame.mixer.init()
+init_sounds()
 pygame.display.set_caption("Jotem´s Redemption")
 
 reproducir_musica_menu()

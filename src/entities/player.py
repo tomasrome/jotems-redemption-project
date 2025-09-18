@@ -1,5 +1,6 @@
 
 from src.utils.funciones import cargar_animaciones
+from assets.sounds.sounds import sonido_jump, sonido_land, sonido_run
 import pygame
 
 class Player():
@@ -38,6 +39,7 @@ class Player():
         self.atacando = False
 
         self.flip = False
+        self.ultimo_paso = 0
     
     def updates(self):
 
@@ -49,6 +51,9 @@ class Player():
             self.pos_y = 631
             self.vel_y = 0
             self.en_el_suelo = True
+        
+        if self.en_el_suelo and self.estado_anterior == "fall":
+            sonido_land()
         
         if self.estado != self.estado_anterior:
             self.frame_index = 0
@@ -71,6 +76,12 @@ class Player():
         self.image = self.animaciones[self.estado][self.frame_index]
         self.forma = self.image.get_rect()
         self.forma.midbottom = (self.pos_x, self.pos_y)
+
+        if self.estado == "run" and self.frame_index in [0, 3, 7, 9]:
+            ahora = pygame.time.get_ticks()
+            if ahora - self.ultimo_paso > 120: 
+                sonido_run()
+                self.ultimo_paso = ahora
 
 
     def dibujar(self, superficie):
@@ -95,6 +106,7 @@ class Player():
 
     def saltar(self):
         if self.en_el_suelo:
+            sonido_jump()
             self.vel_y = self.fuerza_salto
             self.en_el_suelo = False
 
@@ -107,6 +119,7 @@ class Player():
                 self.estado = "jump"
             else:
                 self.estado = "fall"
+
         elif teclas[pygame.K_a] or teclas[pygame.K_d]:
             self.estado = "run"
         else:
