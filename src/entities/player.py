@@ -87,7 +87,10 @@ class Player():
     def dibujar(self, superficie):
         imagem_flip = pygame.transform.flip(self.image, self.flip, False)
         superficie.blit(imagem_flip, self.forma)
-        #pygame.draw.rect(superficie, (0, 255, 0), self.forma, 2)
+        pygame.draw.rect(superficie, (0, 255, 0), self.forma, 2)
+        hitbox = self.get_hitbox()
+        if hitbox:
+            pygame.draw.rect(superficie, (255, 0, 0), hitbox, 2)
     
 
     def movimiento(self, delta_x):
@@ -133,3 +136,14 @@ class Player():
             self.update_time = pygame.time.get_ticks()
             sonido_attack()
     
+    def get_hitbox(self):
+        if not self.atacando:
+            return None
+        
+        if self.estado == "attack" and self.frame_index in [4, 5, 6]:  
+            if self.flip:
+                return pygame.Rect(self.forma.left, self.forma.top + 20, 200, self.forma.height // 2)
+            else:
+                return pygame.Rect(self.forma.right - 200, self.forma.top + 20, 200, self.forma.height // 2)
+        
+        return None

@@ -99,7 +99,10 @@ def ejecutar_juego():
         if jugador.atacando and jugador.forma.colliderect(enemigo_1.forma):
             enemigo_1.recibir_golpe()
 
-        
+        hitbox = jugador.get_hitbox()
+        if hitbox:
+            print("Hitbox activa:", hitbox)
+            pygame.draw.rect(screen, (255, 0, 0), hitbox, 2)
 
         #Pausamos el movimiento del fondo
         #if jugador.forma.midbottom > (275,365) and jugador.estado != "idle":
