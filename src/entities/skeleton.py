@@ -34,6 +34,9 @@ class Skeleton():
         self.atacando = False
 
         self.flip = False
+        self.rect = self.image.get_rect(topleft=(x, y))
+        self.vida = 100
+        self.vida_max = 100
 
 
     def update(self):
@@ -108,3 +111,5 @@ class Skeleton():
 
     def recibir_golpe(self):
         self.fue_golpeado = True
+
+    

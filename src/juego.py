@@ -13,9 +13,6 @@ def ejecutar_juego():
     reloj = pygame.time.Clock()
     corriendo = True
 
-
-
-
     imagen_background_1 = pygame.image.load("assets//image//background//fondo10.png")
     posicion_fondo_1 = 0
     imagen_background_2 = pygame.image.load("assets//image//background//fondo20.png")
@@ -35,7 +32,7 @@ def ejecutar_juego():
     while corriendo:
 
         
-        teclas = pygame.key.get_pressed()
+        keys = pygame.key.get_pressed()
         reloj.tick(constantes.FPS)
         for event in pygame.event.get():
 
@@ -48,8 +45,6 @@ def ejecutar_juego():
                         return "menu"
                     if event.key == pygame.K_a:
                         mover_izquierda = True
-                    if event.key == pygame.K_w:
-                        mover_arriba = True
                     if event.key == pygame.K_d:
                         mover_derecha = True
                     if event.key == pygame.K_RIGHT:
@@ -59,8 +54,6 @@ def ejecutar_juego():
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:
                     mover_izquierda = False
-                if event.key == pygame.K_w:
-                    mover_arriba = False
                 if event.key == pygame.K_d:
                     mover_derecha = False
                 if event.key == pygame.K_RIGHT:
@@ -79,8 +72,7 @@ def ejecutar_juego():
             delta_x = -constantes.VELOCIDAD
             jugador.movimiento(delta_x)
 
-        if teclas[pygame.K_w]:
-            jugador.saltar()
+        
         
         if ene_mover_izquierda == True:
             delta_ene = -constantes.VELOCIDAD
@@ -90,7 +82,8 @@ def ejecutar_juego():
             enemigo_1.movimiento(delta_ene)
 
         
-        keys = pygame.key.get_pressed()
+        if keys[pygame.K_w]:
+            jugador.saltar()
         if keys[pygame.K_SPACE]:
             jugador.atacar()
         if keys[pygame.K_UP]:
@@ -128,10 +121,6 @@ def ejecutar_juego():
 
         if posicion_fondo_luces <= -1280 or posicion_fondo_luces >= 1280:
             posicion_fondo_luces = 0
-        
-    
-        
-        
 
         screen.blit(imagen_background_1,(posicion_fondo_1,0))
         screen.blit(imagen_background_1,(posicion_fondo_1+1280,0))
@@ -142,12 +131,13 @@ def ejecutar_juego():
 
 
         jugador.movimiento(delta_x)
-        jugador.controlar_estado(teclas)
+        jugador.controlar_estado(keys)
         jugador.updates()   
         jugador.dibujar(screen)
 
-        enemigo_1.controlar_estado(teclas)
+        enemigo_1.controlar_estado(keys)
         enemigo_1.update()
         enemigo_1.dibujar(screen)
+        enemigo_1.draw_health_bar(screen)
 
         pygame.display.flip()
