@@ -1,5 +1,5 @@
 import pygame
-from config.screen import boton_jugar,boton_opciones,boton_salir,screen
+from src.config.screen import boton_jugar,boton_opciones,boton_salir,screen
 from assets.image.background.background import background_menu
 from assets.color import color
 import src.utils.constantes as constantes

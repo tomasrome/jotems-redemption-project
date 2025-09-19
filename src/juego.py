@@ -1,6 +1,6 @@
 
 import pygame
-from config.screen import screen
+from src.config.screen import screen
 import src.utils.constantes as constantes
 from src.entities.personaje import Personaje
 from src.utils.funciones import escalar_img
@@ -138,6 +138,6 @@ def ejecutar_juego():
         enemigo_1.controlar_estado(keys)
         enemigo_1.update()
         enemigo_1.dibujar(screen)
-        enemigo_1.draw_health_bar(screen)
+        
 
         pygame.display.flip()
