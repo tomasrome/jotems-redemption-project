@@ -87,10 +87,10 @@ class Player():
     def dibujar(self, superficie):
         imagem_flip = pygame.transform.flip(self.image, self.flip, False)
         superficie.blit(imagem_flip, self.forma)
-        pygame.draw.rect(superficie, (0, 255, 0), self.forma, 2)
+        """ pygame.draw.rect(superficie, (0, 255, 0), self.forma, 2)
         hitbox = self.get_hitbox()
         if hitbox:
-            pygame.draw.rect(superficie, (255, 0, 0), hitbox, 2)
+            pygame.draw.rect(superficie, (255, 0, 0), hitbox, 2) """
     
 
     def movimiento(self, delta_x):

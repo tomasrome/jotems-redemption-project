@@ -16,6 +16,15 @@ def dibujar_texto(texto, x, y, color, tamanio = 40):
     screen.blit(superficie,rect)
     return rect
 
+def dibujar_texto2(texto, x, y, color, tamanio = 40):
+
+    fuente_opciones = pygame.font.Font(None, tamanio)
+    superficie = fuente_opciones.render(texto,True,color)
+    rect = superficie.get_rect()
+    rect.center = (x,y)
+    screen.blit(superficie,rect)
+    return rect
+
 hover = False
 
 def mostrar_menu():
