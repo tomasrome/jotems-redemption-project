@@ -120,7 +120,11 @@ class Skeleton():
         self.pos_x += delta_x
 
     def controlar_estado(self, teclas):
-        if not self.vivo or self.reproduciendo_hit:
+
+        if not self.vivo or self.muriendo:
+            return
+            
+        if self.reproduciendo_hit and self.estado == "hit":
             return
             
         if self.atacando:
@@ -168,7 +172,7 @@ class Skeleton():
         pygame.draw.rect(superficie, BLANCO, (barra_x, barra_y, barra_ancho, barra_alto), 1)
 
     def atacar(self):
-        if not self.atacando and self.vivo and not self.reproduciendo_hit:
+        if not self.atacando and self.vivo and not (self.reproduciendo_hit and self.estado == "hit"):
             self.estado = "attack"
             self.atacando = True
             self.frame_index = 0
