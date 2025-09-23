@@ -183,12 +183,12 @@ class Skeleton():
             barra_x = self.forma.centerx - barra_ancho // 2
             barra_y = self.forma.top - 15
         
-        pygame.draw.rect(superficie, ROJO, (barra_x, barra_y, barra_ancho, barra_alto))
+        #pygame.draw.rect(superficie, VERDE, (barra_x, barra_y, barra_ancho, barra_alto))
         
         vida_porcentaje = self.vida / self.vida_max
         vida_ancho = int(barra_ancho * vida_porcentaje)
         if vida_ancho > 0:
-            pygame.draw.rect(superficie, VERDE, (barra_x, barra_y, vida_ancho, barra_alto))
+            pygame.draw.rect(superficie, ROJO, (barra_x, barra_y, vida_ancho, barra_alto))
         
         pygame.draw.rect(superficie, BLANCO, (barra_x, barra_y, barra_ancho, barra_alto), 1)
 
