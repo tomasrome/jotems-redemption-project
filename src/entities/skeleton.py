@@ -118,16 +118,17 @@ class Skeleton():
 
 
     def movimiento(self, delta_x):
-        if not self.vivo:
-            return
+        if not self.atacando:
+            if not self.vivo:
+                return
             
-        if delta_x < 0:
-            self.flip = True
-        elif delta_x > 0:
-            self.flip = False
-        
-        self.pos_x += delta_x
-        self.posicion_absoluta_x += delta_x
+            if delta_x < 0:
+                self.flip = True
+            elif delta_x > 0:
+                self.flip = False
+            
+            self.pos_x += delta_x
+            self.posicion_absoluta_x += delta_x
 
 
     def actualizar_posicion_pantalla(self, nueva_pos_x):
