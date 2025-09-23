@@ -2,7 +2,7 @@
 
 <div align="center">
   
-![Game Banner](assets/image/banner.jpg)
+![Game Banner](../assets/image/banner.jpg)
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Pygame](https://img.shields.io/badge/Pygame-2.0+-green?style=for-the-badge&logo=python&logoColor=white)](https://www.pygame.org/)
@@ -36,7 +36,7 @@ En este juego encarnas a un valiente guerrero que debe enfrentarse a enemigos de
 
 ## 📷 Capturas de pantalla
 
-| ![Captura-1](assets/image/screen-menu.jpg) | ![Captura-2](assets/image/screen-gameplay.png) |
+| ![Captura-1](../assets/image/screen-menu.jpg) | ![Captura-2](../assets/image/screen-gameplay.jpg) |
 
 ---
 
@@ -70,7 +70,11 @@ cd jotems-redemption-project
 pip install -r requirements.txt
 
 # 4. Ejecutar el juego
+#Windows
 python main.py
+
+#Linux/macOS
+python3 main.py
 ```
 
 ### Instalación rápida
