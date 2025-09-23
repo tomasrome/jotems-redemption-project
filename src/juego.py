@@ -20,7 +20,10 @@ def ejecutar_juego():
     imagen_background_luces = pygame.image.load("assets//image//background//luces1.png")
     posicion_fondo_luces = 0
 
-    jugador = Player(100,631)
+
+
+    jugador = Player(300,631)
+    posicion_absoluta_jugador = 0  
     enemigo_1 = Skeleton(900, 631)
 
     mover_izquierda= False
@@ -98,24 +101,25 @@ def ejecutar_juego():
             enemigo_1.recibir_golpe()
 
         #Pausamos el movimiento del fondo
-        if jugador.forma.midbottom > (800,365) and jugador.estado != "idle":
 
-            posicion_fondo_1 -= 9.5
-            posicion_fondo_2 -= 10.5
-            posicion_fondo_luces -= 11
+        if jugador.forma.midbottom > (899,631) and jugador.estado != "idle":
+            posicion_fondo_1 -= 10.5
+            posicion_fondo_2 -= 11.5
+            posicion_fondo_luces -= 12
+            posicion_absoluta_jugador += 10.5  
+
+        if jugador.forma.midbottom < (200,631) and posicion_absoluta_jugador > 0:  
+            posicion_fondo_1 += 10.5
+            posicion_fondo_2 += 11.5
+            posicion_fondo_luces += 12
+            posicion_absoluta_jugador -= 10.5  
+
         
-        #if jugador.forma.midbottom < (20,365):
-
-          #  posicion_fondo_1 += 2
-          #  posicion_fondo_2 += 3
-          #  posicion_fondo_luces += 1
-
         if posicion_fondo_1 <= -1280 or posicion_fondo_1 >= 1280:
             posicion_fondo_1 = 0
-        
+
         if posicion_fondo_2 <= -1280 or posicion_fondo_2 >= 1280:
             posicion_fondo_2 = 0
-        
 
         posicion_fondo_luces -= 1.3
 

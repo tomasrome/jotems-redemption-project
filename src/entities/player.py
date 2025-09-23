@@ -99,9 +99,13 @@ class Player():
         elif delta_x > 0:
             self.flip = False
         
-        if self.pos_x + delta_x > 800:
+        if self.pos_x + delta_x < 200:
             delta_x = 0
-            self.pos_x = 800
+            self.pos_x = 200
+        
+        if self.pos_x + delta_x > 900:
+            delta_x = 0
+            self.pos_x = 900
         else:
             self.pos_x += delta_x
         
