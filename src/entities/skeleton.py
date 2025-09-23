@@ -39,6 +39,11 @@ class Skeleton():
 
         self.pos_x = x
         self.pos_y = y
+        
+        self.posicion_absoluta_x = x
+        self.posicion_absoluta_y = y
+        
+        self.posicion_actual = x
 
         self.flip = False
         self.rect = self.image.get_rect(topleft=(x, y))
@@ -47,6 +52,7 @@ class Skeleton():
         self.vida_max = 100
         self.vivo = True
         self.danio_base = 25  
+
 
     def update(self):
         tiempo_actual = pygame.time.get_ticks()
@@ -87,9 +93,11 @@ class Skeleton():
                     self.reproduciendo_hit = False
 
         self.image = self.animaciones[self.estado][self.frame_index]
+        # Actualizar la forma con la posición en pantalla actual
         self.forma = self.image.get_rect()
         self.forma.midbottom = (self.pos_x, self.pos_y)
         self.rect = self.forma  
+
 
     def recibir_daño(self, daño=None):
         if daño is None:
@@ -108,6 +116,7 @@ class Skeleton():
             self.vida = 0
             self.vivo = False
 
+
     def movimiento(self, delta_x):
         if not self.vivo:
             return
@@ -118,9 +127,20 @@ class Skeleton():
             self.flip = False
         
         self.pos_x += delta_x
+        self.posicion_absoluta_x += delta_x
+
+
+    def actualizar_posicion_pantalla(self, nueva_pos_x):
+        self.pos_x = nueva_pos_x
+        self.forma.midbottom = (self.pos_x, self.pos_y)
+
+    def establecer_posicion_absoluta(self, pos_absoluta_x):
+        self.posicion_absoluta_x = pos_absoluta_x
+
+    def obtener_posicion_absoluta(self):
+        return self.posicion_absoluta_x
 
     def controlar_estado(self, teclas):
-
         if not self.vivo or self.muriendo:
             return
             
