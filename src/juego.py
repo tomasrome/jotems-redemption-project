@@ -98,11 +98,11 @@ def ejecutar_juego():
             enemigo_1.recibir_golpe()
 
         #Pausamos el movimiento del fondo
-        #if jugador.forma.midbottom > (275,365) and jugador.estado != "idle":
+        if jugador.forma.midbottom > (800,365) and jugador.estado != "idle":
 
-          #  posicion_fondo_1 -= 2.5
-          #  posicion_fondo_2 -= 3.5
-          #  posicion_fondo_luces -= 1
+            posicion_fondo_1 -= 9.5
+            posicion_fondo_2 -= 10.5
+            posicion_fondo_luces -= 11
         
         #if jugador.forma.midbottom < (20,365):
 
