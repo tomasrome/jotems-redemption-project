@@ -22,12 +22,11 @@ def ejecutar_juego():
     jugador = Player(300,631)
     posicion_absoluta_jugador = 0 
 
-    # Posición inicial del enemigo en pantalla
+
     posicion_inicial_enemigo_pantalla = 900
-    # Posición absoluta del enemigo en el mundo (inicialmente igual a la de pantalla)
     posicion_absoluta_enemigo = posicion_inicial_enemigo_pantalla
     enemigo_1 = Skeleton(posicion_inicial_enemigo_pantalla, 631)
-    # Establecer la posición absoluta inicial del enemigo
+
     enemigo_1.establecer_posicion_absoluta(posicion_absoluta_enemigo)
 
     mover_izquierda= False
@@ -77,13 +76,12 @@ def ejecutar_juego():
             delta_x = -constantes.VELOCIDAD
             jugador.movimiento(delta_x)
 
-        # Movimiento del enemigo (actualiza su posición absoluta)
         if ene_mover_izquierda == True:
             delta_ene = -constantes.VELOCIDAD
-            enemigo_1.movimiento(delta_ene)  # Esto ya actualiza tanto pos_x como posicion_absoluta_x
+            enemigo_1.movimiento(delta_ene)  
         if ene_mover_derecha == True:
             delta_ene = constantes.VELOCIDAD
-            enemigo_1.movimiento(delta_ene)  # Esto ya actualiza tanto pos_x como posicion_absoluta_x
+            enemigo_1.movimiento(delta_ene)  
 
         if keys[pygame.K_w]:
             jugador.saltar()
@@ -99,10 +97,7 @@ def ejecutar_juego():
         if hitbox and hitbox.colliderect(enemigo_1.forma):
             enemigo_1.recibir_golpe()
 
-        # Variables para trackear el desplazamiento del fondo
-        desplazamiento_fondo = 0
 
-        # Pausamos el movimiento del fondo
         if jugador.forma.midbottom > (899,631) and jugador.estado != "idle":
             desplazamiento_fondo = -10.5
             posicion_fondo_1 -= 10.5
@@ -117,8 +112,6 @@ def ejecutar_juego():
             posicion_fondo_luces += 12
             posicion_absoluta_jugador -= 10.5  
 
-        # Siempre sincronizar la posición del enemigo en pantalla con su posición absoluta
-        # independientemente de si hay desplazamiento o no
         pos_absoluta_enemigo = enemigo_1.obtener_posicion_absoluta()
         nueva_posicion_pantalla = pos_absoluta_enemigo - posicion_absoluta_jugador + 300
         enemigo_1.actualizar_posicion_pantalla(nueva_posicion_pantalla)

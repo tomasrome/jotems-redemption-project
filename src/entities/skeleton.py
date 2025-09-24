@@ -93,7 +93,6 @@ class Skeleton():
                     self.reproduciendo_hit = False
 
         self.image = self.animaciones[self.estado][self.frame_index]
-        # Actualizar la forma con la posición en pantalla actual
         self.forma = self.image.get_rect()
         self.forma.midbottom = (self.pos_x, self.pos_y)
         self.rect = self.forma  
@@ -104,6 +103,10 @@ class Skeleton():
             daño = self.danio_base
             
         self.vida -= daño
+        
+        if self.atacando:
+            self.atacando = False
+        
         self.estado = "hit"
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
@@ -118,17 +121,16 @@ class Skeleton():
 
 
     def movimiento(self, delta_x):
-        if not self.atacando:
-            if not self.vivo:
-                return
+        if self.reproduciendo_hit or not self.vivo or self.atacando:
+            return
             
-            if delta_x < 0:
-                self.flip = True
-            elif delta_x > 0:
-                self.flip = False
-            
-            self.pos_x += delta_x
-            self.posicion_absoluta_x += delta_x
+        if delta_x < 0:
+            self.flip = True
+        elif delta_x > 0:
+            self.flip = False
+        
+        self.pos_x += delta_x
+        self.posicion_absoluta_x += delta_x
 
 
     def actualizar_posicion_pantalla(self, nueva_pos_x):
@@ -145,7 +147,7 @@ class Skeleton():
         if not self.vivo or self.muriendo:
             return
             
-        if self.reproduciendo_hit and self.estado == "hit":
+        if self.reproduciendo_hit:
             return
             
         if self.atacando:
@@ -193,7 +195,7 @@ class Skeleton():
         pygame.draw.rect(superficie, BLANCO, (barra_x, barra_y, barra_ancho, barra_alto), 1)
 
     def atacar(self):
-        if not self.atacando and self.vivo and not (self.reproduciendo_hit and self.estado == "hit"):
+        if not self.atacando and self.vivo and not self.reproduciendo_hit:
             self.estado = "attack"
             self.atacando = True
             self.frame_index = 0
