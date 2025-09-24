@@ -94,20 +94,21 @@ class Player():
     
 
     def movimiento(self, delta_x):
-        if delta_x < 0:
-            self.flip = True
-        elif delta_x > 0:
-            self.flip = False
-        
-        if self.pos_x + delta_x < 200:
-            delta_x = 0
-            self.pos_x = 200
-        
-        if self.pos_x + delta_x > 900:
-            delta_x = 0
-            self.pos_x = 900
-        else:
-            self.pos_x += delta_x
+        if not self.atacando:
+            if delta_x < 0:
+                self.flip = True
+            elif delta_x > 0:
+                self.flip = False
+            
+            if self.pos_x + delta_x < 200:
+                delta_x = 0
+                self.pos_x = 200
+            
+            if self.pos_x + delta_x > 900:
+                delta_x = 0
+                self.pos_x = 900
+            else:
+                self.pos_x += delta_x
         
     
 
@@ -133,7 +134,7 @@ class Player():
             self.estado = "idle"
 
     def atacar(self):
-        if not self.atacando:
+        if not self.atacando and self.en_el_suelo:
             self.estado = "attack"
             self.atacando = True
             self.frame_index = 0
